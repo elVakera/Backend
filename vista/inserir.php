@@ -16,7 +16,7 @@
         
         <input name="action" id="ins" type="submit" value="Inserir"/>
     </form>
-    <form action = <?php echo htmlspecialchars("../index.php") ?> method="post">                                        <!-- boto enrera -->
+    <form action = <?php echo htmlspecialchars("menuBotons.php") ?> method="post">                                        <!-- boto enrera -->
         <input id = "submit" type="submit" value="Enrera"/>		    
 
     </form>  

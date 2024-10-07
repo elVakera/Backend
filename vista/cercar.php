@@ -13,7 +13,7 @@
         <input name="action" id="ins" type="submit" value="Cercar"/>
     </form>
     
-    <form action="<?php echo htmlspecialchars("../index.php"); ?>" method="post">
+    <form action="<?php echo htmlspecialchars("menuBotons.php"); ?>" method="post">
         <input id="submit" type="submit" value="Enrera"/>
     </form>  
 
