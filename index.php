@@ -9,7 +9,7 @@
 <body>
     <h1>Login users</h1>
     <form action="<?php echo htmlspecialchars("vista/menuBotons.php"); ?>" method="post">                               <!-- finestra per inserir -->
-        <label for="userId">Introdueix el nom d'usuari o el correu:</label>                                             <!-- userId -->
+        <label for="userId">Introdueix el nom d'usuari o el correu:</label>                                             <!-- userId/correu -->
         <input type="text" id="userId" name="userId" placeholder="usuariExemple / usuari@exemple.com" required />                    
         
         <label>Password:</label>                                                                                        <!-- password -->
@@ -17,13 +17,17 @@
         <label></label>
         <input name="action" id="log" type="submit" value="login"/>                                                     <!-- boto login -->
         <label></label>
-        <a href="vista/olvido.php">He oblidat contrasenya</a>                                                    
+        <p>Has oblidat la teva contrasenya?</p>
+        <a href="vista/olvido.php">Recuperar</a>                                                                        <!-- link a recuperar -->
     </form>
     <form action = <?php echo htmlspecialchars("vista/registre.php") ?> method="post">                                  <!-- boto registrarse -->
         <input id = "submit" type="submit" value="Registrar-se"/>	
-        <input name="action" id="gess" type="submit" value="Convidat"/>	    
+        	    
 
-    </form>  
+    </form> 
+    <form action= <?php echo htmlspecialchars("vista/mostrar.php") ?> method="post">                                    <!-- entrar com convidat -->
+        <input name="action" id="gess" type="submit" value="Convidat"/>
+    </form>
     <?php require_once __DIR__ . '/./controlador/controlador.php';?>                                                    <!-- link de requeriment del controlador -->
 </body>
 </html>

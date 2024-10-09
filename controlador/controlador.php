@@ -9,6 +9,7 @@ function conexio() {
     } catch (PDOException $e) {
         // Mostramos los errores si ocurren
         echo "Error: " . $e->getMessage();
+        die();
     }
     return $conexio;                                                                        // Devuelve la conexión establecida
 }
