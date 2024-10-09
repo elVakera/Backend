@@ -9,22 +9,22 @@
 <body>
     <h1>Quina operacio vols realitzar?</h1>                                                 <!-- text informativo -->
 
-    <form action="<?php echo htmlspecialchars("./vista/inserir.php"); ?>" method="post">    <!-- botón insertar -->
+    <form action="<?php echo htmlspecialchars("inserir.php"); ?>" method="post">    <!-- botón insertar -->
         <input name="action" id="ins" type="submit" value="Inserir"/>
         <span class="description">Añadir un nuevo artículo.</span>
     </form>
 
-    <form action="<?php echo htmlspecialchars("./vista/modificar.php"); ?>" method="post">  <!-- botón modificar -->
+    <form action="<?php echo htmlspecialchars("modificar.php"); ?>" method="post">  <!-- botón modificar -->
         <input name="action" id="mod" type="submit" value="Modificar"/>
         <span class="description">Modificar un artículo existente.</span>
     </form>
 
-    <form action="<?php echo htmlspecialchars("./vista/eliminar.php"); ?>" method="post">   <!-- botón eliminar -->
+    <form action="<?php echo htmlspecialchars("eliminar.php"); ?>" method="post">   <!-- botón eliminar -->
         <input name="action" id="del" type="submit" value="Eliminar"/>
         <span class="description">Eliminar un artículo por su título.</span>
     </form>
 
-    <form action="<?php echo htmlspecialchars("./vista/cercar.php"); ?>" method="post">     <!-- botón buscar -->
+    <form action="<?php echo htmlspecialchars("cercar.php"); ?>" method="post">     <!-- botón buscar -->
         <input name="action" id="ser" type="submit" value="Cercar"/>
         <span class="description">Buscar un artículo por su título.</span>
     </form>
