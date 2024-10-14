@@ -112,4 +112,18 @@ function mostrarArticles($connexio, $titol) {
     }
     return $resultats;                                                                                      // Devolver todos los artículos encontrados
 }
+function mostrarTot($connexio){
+    $resultats = [];
+    try{
+        $cerca = $connexio->prepare('SELECT * FROM articles');
+        $cerca->execute();
+
+        if($cerca->rowCount() > 0){
+            $resultats = $cerca->fetchAll(PDO::PARAM_STR);
+        }
+    }catch(PDOException $e){
+        echo "Error: " . $e->getMessage();
+    }
+    return $resultats;
+}
 ?>

@@ -21,7 +21,8 @@ function inici() {
     $ins = "Inserir";                                                                       // Acción de insertar
     $del = "Eliminar";                                                                      // Acción de eliminar
     $mod = "Modificar";                                                                     // Acción de modificar
-    $ser = "Cercar";                                                                        // Acción de buscar
+    $ser = "Cercar";
+    $gess = "Convidat";                                                                        // Acción de buscar
     $connexio = conexio();                                                                  // Establece la conexión a la base de datos
 
     $titol = $_POST["titol"] ?? null;                                                       // Captura el título del formulario
@@ -72,7 +73,9 @@ function inici() {
                     $feedback = "<br>Cal intoduir titol per cercar</br>";                   // Mensaje si no se introduce título
                 }
                 break;
-
+            case $gess:
+                mostrarTot($connexio);
+                break;
             default:                                                                        // Si no se encuentra ninguna acción válida
                 $feedback = "<br>Cal intoduir titol per cercar, modificar o eliminar i un article per modificar o introduir</br>"; // Mensaje general
         }
