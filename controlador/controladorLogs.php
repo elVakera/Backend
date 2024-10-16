@@ -24,6 +24,7 @@ function login(){
             case $log:
                 if(empty($user)){
                     if(empty($pass)){
+
                         $enviat = true;
                     }
                 }
