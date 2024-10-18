@@ -1,18 +1,8 @@
 <?php
+require_once __DIR__ . '/../controlador/controladorCon.php';
 include_once __DIR__ . '/../model/model.php';                                               // Incluye el archivo del modelo
-inici();                                                                                    // Llama a la función inici
 
-function conexio() {
-    try {
-        $conexio = new PDO('mysql:host=localhost;dbname=Pt02_david_vaquera', 'root', '');   // Establece la conexión a la base de datos
-        // echo "Connexio correcta!!" . "<br />"; 
-    } catch (PDOException $e) {
-        // Mostramos los errores si ocurren
-        echo "Error: " . $e->getMessage();
-        die();
-    }
-    return $conexio;                                                                        // Devuelve la conexión establecida
-}
+inici();                                                                                    // Llama a la función inici
 
 function inici() {
     $button = $_POST["action"] ?? null;                                                     // Captura la acción del formulario

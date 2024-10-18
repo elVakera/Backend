@@ -1,19 +1,12 @@
 <?php
-function conexio() {
-    try {
-        $conexio = new PDO('mysql:host=localhost;dbname=Pt02_david_vaquera', 'root', '');   // Establece la conexión a la base de datos
-        // echo "Connexio correcta!!" . "<br />"; 
-    } catch (PDOException $e) {
-        // Mostramos los errores si ocurren
-        echo "Error: " . $e->getMessage();
-        die();
-    }
-    return $conexio;                                                                        // Devuelve la conexión establecida
-}
+require_once __DIR__ . '/../controlador/controladorCon.php';
+require_once __DIR__ . '/../model/modelLogs.php';                                               // Incluye el archivo del modelo
+
+login();
 function login(){
+    $connexio = conexio();
     $button = $_POST["action"] ?? null;                                                     // Captura la acción del formulario
     $log = "login";
-    $reg = "Registrar-se";
     $feedback = "";
     $enviat = false;
     $user = $_POST["userId"] ?? null;
@@ -22,18 +15,18 @@ function login(){
     if ($_SERVER["REQUEST_METHOD"] == "POST") {                                             // Verifica si el método de la solicitud es POST
         switch($button){
             case $log:
-                if(empty($user)){
-                    if(empty($pass)){
-
-                        $enviat = true;
+                if(!empty($user)){
+                    if(!empty($pass)){
+                        if(verificarLogin($connexio,$user,$pass)){
+                            //uuario autentificado abrir sesion
+                            $enviat = true;
+                            header(header:"Location: ./vista/menuBotons.php");
+                        }
                     }
                 }
                 break;
-            case $reg:
-                    registrar();
-                break;
             default:
-                $feedback = "<br>Cal intoduir titol per cercar, modificar o eliminar i un article per modificar o introduir</br>";
+                $feedback = "<br>Cal registrarse per poder logejarse</br>";
                 break;
         }
     }
@@ -41,31 +34,11 @@ function login(){
         echo $feedback;                                                                     // Muestra el mensaje de retroalimentación
     }
 }
-function registrar(){
-    $button = $_POST["action"] ?? null;                                                     // Captura la acción del formulario
-    $reg = "Registrar-se";
-    $enviat = false;
-    $user = $_POST["nick"] ?? null;
-    $mail = $_POST["email"] ?? null;
-    $pass = $_POST["pass1"] ?? null;
-    $pass2 = $_POST["pass2"] ?? null;
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        switch($button){
-            case $reg:
-                if(empty($user)){
-                    if(empty($mail)){
-                        if(empty($pass)){
-                            if(empty($pass2) || $pass2 != $pass){
-                                
-                            }
-                        }
-                    }
-                }
-                break;
-        }
-    }
-    if (!empty($feedback) && $enviat) {                                                     // Si hay feedback y se envió un formulario
-        echo $feedback;                                                                     // Muestra el mensaje de retroalimentación
-    }
+function encriptar($pass){
+    $encriptPass = password_hash($pass, PASSWORD_DEFAULT);
+    return $encriptPass;
+}
+function ObtenirPassPerId($password, $passwordHash){
+    return password_verify($password, $passwordHash);
 }
 ?>
